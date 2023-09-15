@@ -1,0 +1,21 @@
+{
+  "name": "hyper-sdk-rpc",
+  "version": "1.0.0",
+  "description": "JSON-RPC wrapper for hyper-sdk to enable embedding into other applications.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hypercore",
+    "hyperdrive",
+    "holepunch",
+    "sdk",
+    "rpc"
+  ],
+  "author": "RangerMauve",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "JSONStream": "^1.3.5"
+  }
+}
