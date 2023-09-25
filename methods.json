@@ -1,0 +1,14 @@
+{
+	"sdk.getDrive(url).version": {
+		"properties": {
+			"url" : {"type": "string"}
+		}
+	},
+	"sdk.getDrive(url).mirror(out,options)": {
+		"properties": {
+			"url": {"type": "string"},
+			"out": {"type": "string"},
+			"options": {"type": "object", "properties": {}}
+		}
+	}
+}
