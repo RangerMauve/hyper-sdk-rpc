@@ -25,7 +25,7 @@ hyper-sdk API calls are represented in the `method` field with psudocode like `s
 
 There are three types of method calls in the API:
 
-*Method Invocations*: When an api ends with barackets `()` it means a method will be invoked, and the return value will be placed in the response.`Some JS apis are async and return promises, in which case the promise will be awaited before responding.
+*Method Invocations*: When an api ends with barackets `()` it means a method will be invoked, and the return value will be placed in the response. Some JS apis are async and return promises, in which case the promise will be awaited before responding.
 *Property accessors*: When an api call ends without a method invocation like `sdk.publicKey`, the property will be accessed and returned in the response.
 *Event listeners*: When an api ends with `.on("event")` or `.off("event")` it will register or un register listeners for an event. Make sure to use the same `id` when calling `.on` or `.off`. Once subscribed you will start getting responses for each event of that type until invoking `.off("event")`.
 
