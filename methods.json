@@ -1,4 +1,30 @@
 {
+  "sdk.getDrive(url).get(path,options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "wait": {
+            "type": "boolean"
+          },
+          "timeout": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "required": ["url", "path"],
+    "returns": {
+      "type": "string",
+      "format": "base64"
+    }
+  },
   "sdk.getDrive(url).mirror(out, options)": {
     "properties": {
       "url": {
