@@ -1,4 +1,67 @@
 {
+  "sdk.getDrive(url).entry(path,options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "follow": {
+            "type": "boolean"
+          },
+          "wait": {
+            "type": "boolean"
+          },
+          "timeout": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "required": ["url", "path"],
+    "returns": {
+      "type": "object",
+      "properties": {
+        "seq": "number",
+        "key": "string",
+        "value": {
+          "type": "object",
+          "properties": {
+            "executable": {
+              "type": "boolean"
+            },
+            "linkname": {
+              // FIXME: "linkname" may also be "null"
+              "type": "string"
+            },
+            "blob": {
+              "type": "object",
+              "properties": {
+                "blockOffset": {
+                  "type": "number"
+                },
+                "blockLength": {
+                  "type": "number"
+                },
+                "byteOffset": {
+                  "type": "number"
+                },
+                "byteLength": {
+                  "type": "number"
+                }
+              }
+            },
+            // FIXME: metadata can be anything?
+            "metadata": {}
+          }
+        }
+      }
+    }
+  },
   "sdk.getDrive(url).get(path,options)": {
     "properties": {
       "url": {
