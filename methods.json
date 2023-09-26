@@ -103,6 +103,35 @@
     },
     "required": ["url", "out"]
   },
+  "sdk.getDrive(url).put(path,buffer,options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "buffer": {
+        "type": "string",
+        "format": "base64"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "executable": {
+            "type": "boolean"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      }
+    },
+    "required": ["url", "path", "buffer"],
+    // FIXME: Actually returns Batch.put()
+    "returns": {}
+  },
   "sdk.getDrive(url).version": {
     "properties": {
       "url": {
