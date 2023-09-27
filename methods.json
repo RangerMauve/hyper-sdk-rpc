@@ -11,13 +11,15 @@
         "type": "object",
         "properties": {}
       }
-    }
+    },
+    "required": ["url", "out"]
   },
   "sdk.getDrive(url).version": {
     "properties": {
       "url": {
         "type": "string"
       }
-    }
+    },
+    "required": ["url"]
   }
 }
