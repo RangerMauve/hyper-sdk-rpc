@@ -1,15 +1,23 @@
 # hyper-sdk-rpc
 JSON-RPC wrapper for hyper-sdk to enable embedding into other applications.
 
+## How to use
+
+1. Clone the repo
+2. Set up Node.js @19.x
+3. `npm install`
+4. `npm start`
+5. Cnnect with the client from your application code
+
 ## TODO:
 
-- [ ] Pick JSON RPC library
+- [x] Pick JSON RPC library
 - [ ] Codegen connections to hyper-sdk
-	- [ ] invoke methods
-	- [ ] access properties
-	- [ ] subscribe to events
+	- [x] invoke methods
+	- [x] access properties
+	- [x] subscribe to events
 - [ ] Define JSON Schema for APIs
-- [ ] Set up tcp server
+- [x] Set up tcp server
 - [ ] Set up cli
 - [ ] publish binary
 - [ ] Websocket server support
