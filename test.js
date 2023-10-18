@@ -35,7 +35,7 @@ test('Call API from client on server', async function (t) {
   t.equal(someProperty, SAMPLE_STRING, 'Got expected result from property')
 })
 
-test.only('Call over TCP', async (t) => {
+test('Call over TCP', async (t) => {
   const port = await getPort()
   const sdk = {
     example () {
