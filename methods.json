@@ -115,6 +115,32 @@
     },
     "required": ["url", "out"]
   },
+  "sdk.peers": {
+    "properties": {},
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "publicKey": {
+            "type": "string",
+            "format": "base64"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              // FIXME: According to the docs, topics are base32
+              "format": "base32"
+            }
+          },
+          "prioritized": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
   "sdk.getDrive(url).purge()": {
     "properties": {
       "url": {
