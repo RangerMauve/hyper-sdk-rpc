@@ -141,6 +141,13 @@
       }
     }
   },
+  "sdk.publicKey": {
+    "properties": {},
+    "returns": {
+      "type": "string",
+      "format": "base64"
+    }
+  },
   "sdk.getDrive(url).purge()": {
     "properties": {
       "url": {
