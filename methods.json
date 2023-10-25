@@ -1,4 +1,16 @@
 {
+  "sdk.getDrive(url).del(path)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      }
+    },
+    "required": ["url", "path"],
+    "returns": {}
+  },
   "sdk.getDrive(url).entry(path,options)": {
     "properties": {
       "url": {
