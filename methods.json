@@ -1,4 +1,9 @@
 {
+  "sdk.close()": {
+    "properties": {},
+    // FIXME: Returns a promise.  How to indicate useless return value?
+    "returns": {}
+  },
   "sdk.getDrive(url).del(path)": {
     "properties": {
       "url": {
