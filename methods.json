@@ -103,6 +103,16 @@
     },
     "required": ["url", "out"]
   },
+  "sdk.getDrive(url).purge()": {
+    "properties": {
+      "url": {
+        "type": "string"
+      }
+    },
+    "required": ["url"],
+    // FIXME: Returns a promise
+    "returns": {}
+  },
   "sdk.getDrive(url).put(path,buffer,options)": {
     "properties": {
       "url": {
