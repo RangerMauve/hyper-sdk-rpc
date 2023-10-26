@@ -4,6 +4,44 @@
     // FIXME: Returns a promise.  How to indicate useless return value?
     "returns": {}
   },
+  "sdk.getDrive(url).createReadStream(path, options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "path": {
+        "type": "string"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "number"
+          },
+          "end": {
+            "type": "number"
+          },
+          "length": {
+            "type": "number"
+          },
+          "wait": {
+            "type": "boolean"
+          },
+          "timeout": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "required": ["url", "path"],
+    "returns": {
+      // TODO: Returns a stream which should be converted to a base64
+      // string, not an array, right?  May the "type" of "returns" be a
+      // "string"?  Or must it be an "object" or an "array"?
+      "type": "string",
+      "format": "base64"
+    }
+  },
   "sdk.getDrive(url).del(path)": {
     "properties": {
       "url": {
