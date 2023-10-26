@@ -105,6 +105,66 @@
       "format": "base64"
     }
   },
+  "sdk.getDrive(url).list(folder,options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "folder": {
+        "type": "string"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "recursive": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "required": ["url", "folder"],
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": "number",
+          "key": "string",
+          "value": {
+            "type": "object",
+            "properties": {
+              "executable": {
+                "type": "boolean"
+              },
+              "linkname": {
+                // FIXME: "linkname" may also be "null"
+                "type": "string"
+              },
+              "blob": {
+                "type": "object",
+                "properties": {
+                  "blockOffset": {
+                    "type": "number"
+                  },
+                  "blockLength": {
+                    "type": "number"
+                  },
+                  "byteOffset": {
+                    "type": "number"
+                  },
+                  "byteLength": {
+                    "type": "number"
+                  }
+                }
+              },
+              // FIXME: metadata can be anything?
+              "metadata": {}
+            }
+          }
+        }
+      }
+    }
+  },
   "sdk.getDrive(url).mirror(out, options)": {
     "properties": {
       "url": {
