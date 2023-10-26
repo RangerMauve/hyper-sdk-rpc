@@ -83,3 +83,24 @@ test('Call over TCP', async (t) => {
     })
   }
 })
+
+test('Request the same property twice', async function (t) {
+  const { socket1: clientConnection, socket2: serverConnection } = new DuplexPair()
+
+  const sdk = {
+    get someProperty () {
+      return SAMPLE_STRING
+    }
+  }
+
+  const client = new ClientConnection(clientConnection)
+  const server = new ServerConnection(sdk, serverConnection)
+
+  client.process().catch((e) => t.fail(e))
+  server.process().catch((e) => t.fail(e))
+
+  const someProperty = await client.call('sdk.someProperty')
+  t.equal(someProperty, SAMPLE_STRING, 'Got expected result from property')
+  const someProperty2 = await client.call('sdk.someProperty')
+  t.equal(someProperty2, SAMPLE_STRING, 'Got expected result from property')
+})
