@@ -192,6 +192,24 @@
     // FIXME: Actually returns Batch.put()
     "returns": {}
   },
+  "sdk.getDrive(url).readdir(folder)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "folder": {
+        "type": "string",
+        "format": "base64"
+      }
+    },
+    "required": ["url", "folder"],
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
   "sdk.getDrive(url).ready()": {
     "properties": {
       "url": {
