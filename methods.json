@@ -67,6 +67,18 @@
     // FIXME: Returns the write stream.  Not useful when serialized?
     "returns": {}
   },
+  "sdk.getDrive(url).writable": {
+    "properties": {
+      "url": {
+        "type": "string"
+      }
+    },
+    "required": ["url"],
+    "returns": {
+      // FIXME: Can "returns" be a "boolean"?
+      "type": "boolean"
+    }
+  },
   "sdk.getDrive(url).del(path)": {
     "properties": {
       "url": {
