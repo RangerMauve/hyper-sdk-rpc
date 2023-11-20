@@ -1,12 +1,14 @@
 import test from 'tape'
 import net from 'node:net'
 import getPort from 'get-port'
+import * as SDK from 'hyper-sdk'
 
 import DuplexPair from 'native-duplexpair'
 
 import { ClientConnection, ServerConnection } from './index.js'
 
 const SAMPLE_STRING = 'Hello World'
+const KEY_NAME = 'foo'
 
 test('Call API from client on server', async function (t) {
   const { socket1: clientConnection, socket2: serverConnection } = new DuplexPair()
@@ -87,11 +89,9 @@ test('Call over TCP', async (t) => {
 test('Request the same property twice', async function (t) {
   const { socket1: clientConnection, socket2: serverConnection } = new DuplexPair()
 
-  const sdk = {
-    get someProperty () {
-      return SAMPLE_STRING
-    }
-  }
+  const sdk = await SDK.create({
+    storage: false
+  })
 
   const client = new ClientConnection(clientConnection)
   const server = new ServerConnection(sdk, serverConnection)
@@ -99,8 +99,8 @@ test('Request the same property twice', async function (t) {
   client.process().catch((e) => t.fail(e))
   server.process().catch((e) => t.fail(e))
 
-  const someProperty = await client.call('sdk.someProperty')
-  t.equal(someProperty, SAMPLE_STRING, 'Got expected result from property')
-  const someProperty2 = await client.call('sdk.someProperty')
-  t.equal(someProperty2, SAMPLE_STRING, 'Got expected result from property')
+  const version = await client.call('sdk.getDrive(url).version', { 'url': KEY_NAME})
+  t.equal(version, 1, 'Got expected result from property')
+  const version2 = await client.call('sdk.getDrive(url).version', { 'url': KEY_NAME})
+  t.equal(version2, 1, 'Got expected result from property')
 })
