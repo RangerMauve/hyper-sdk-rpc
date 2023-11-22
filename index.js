@@ -62,6 +62,7 @@ export class ClientConnection {
   async write (data) {
     const encoded = JSON.stringify(data)
     this.connection.write(encoded)
+    this.connection.write('\n')
   }
 
   async on (path, event, listener, params = {}) {
@@ -148,6 +149,7 @@ export class ServerConnection {
   async write (data) {
     const encoded = JSON.stringify(data)
     this.connection.write(encoded)
+    this.connection.write('\n')
   }
 
   async call (method, params, id) {
