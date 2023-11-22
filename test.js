@@ -18,6 +18,10 @@ test('Call API from client on server', async function (t) {
     },
     get someProperty () {
       return SAMPLE_STRING
+    },
+    async * iterable () {
+      yield 'Hello'
+      yield 'World'
     }
   }
 
@@ -33,6 +37,10 @@ test('Call API from client on server', async function (t) {
 
   const someProperty = await client.call('sdk.someProperty')
   t.equal(someProperty, SAMPLE_STRING, 'Got expected result from property')
+
+  const streamResult = await client.call('sdk.iterable()')
+
+  t.deepEqual(streamResult, ['Hello', 'World'], 'Able to get async iterable into an array')
 })
 
 test('Call over TCP', async (t) => {

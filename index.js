@@ -1,5 +1,3 @@
-import EventEmitter from 'node:events'
-
 import StreamValues from 'stream-json/streamers/StreamValues.js'
 
 export const PROPERTY = 'property'
@@ -180,7 +178,11 @@ export class ServerConnection {
         return null
       } else if (type === METHOD) {
         const args = paramNames.map((name) => params[name])
-        return object[property](...args)
+        const value = await object[property](...args)
+        if (value && value[Symbol.asyncIterator]) {
+          return collect(value)
+        }
+        return value
       } else if (type === PROPERTY) {
         return object[property]
       } else {
@@ -282,9 +284,20 @@ function makeListenerKey (property, id) {
   return id + LISTENER_SPLIT + property
 }
 
+/*
 function parseListenerKey (key) {
   const [id, ...eventSegments] = key.split(LISTENER_SPLIT)
   const property = eventSegments.join(LISTENER_SPLIT)
 
   return { property, id }
+}
+*/
+
+async function collect (iterator) {
+  const buffer = []
+  for await (const chunk of iterator) {
+    buffer.push(chunk)
+  }
+
+  return buffer
 }
