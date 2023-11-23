@@ -4,10 +4,21 @@
     // FIXME: Returns a promise.  How to indicate useless return value?
     "returns": {}
   },
-  "sdk.getDrive(url).writable": {
+  "sdk.getDrive(url,driveOpts).writable": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       }
     },
     "required": ["url"],
@@ -16,10 +27,21 @@
       "type": "boolean"
     }
   },
-  "sdk.getDrive(url).del(path)": {
+  "sdk.getDrive(url,driveOpts).del(path)": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       },
       "path": {
         "type": "string"
@@ -28,10 +50,21 @@
     "required": ["url", "path"],
     "returns": {}
   },
-  "sdk.getDrive(url).entry(path,options)": {
+  "sdk.getDrive(url,driveOpts).entry(path,options)": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       },
       "path": {
         "type": "string"
@@ -91,10 +124,21 @@
       }
     }
   },
-  "sdk.getDrive(url).get(path,options)": {
+  "sdk.getDrive(url,driveOpts).get(path,options)": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       },
       "path": {
         "type": "string"
@@ -117,10 +161,21 @@
       "format": "base64"
     }
   },
-  "sdk.getDrive(url).list(folder,options)": {
+  "sdk.getDrive(url,driveOpts).list(folder,options)": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       },
       "folder": {
         "type": "string"
@@ -177,10 +232,21 @@
       }
     }
   },
-  "sdk.getDrive(url).mirror(out, options)": {
+  "sdk.getDrive(url,driveOpts).mirror(out, options)": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       },
       "out": {
         "type": "string"
@@ -227,20 +293,42 @@
       "format": "base64"
     }
   },
-  "sdk.getDrive(url).purge()": {
+  "sdk.getDrive(url,driveOpts).purge()": {
     "properties": {
       "url": {
         "type": "string"
       }
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
     },
     "required": ["url"],
     // FIXME: Returns a promise
     "returns": {}
   },
-  "sdk.getDrive(url).put(path,buffer,options)": {
+  "sdk.getDrive(url,driveOpts).put(path,buffer,options)": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       },
       "path": {
         "type": "string"
@@ -266,10 +354,21 @@
     // FIXME: Actually returns Batch.put()
     "returns": {}
   },
-  "sdk.getDrive(url).readdir(folder)": {
+  "sdk.getDrive(url,driveOpts).readdir(folder)": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       },
       "folder": {
         "type": "string",
@@ -284,10 +383,21 @@
       }
     }
   },
-  "sdk.getDrive(url).url": {
+  "sdk.getDrive(url,driveOpts).url": {
     "properties": {
       "url": {
         "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
       }
     },
     "required": ["url"],
@@ -295,11 +405,22 @@
       "type": "string"
     }
   },
-  "sdk.getDrive(url).version": {
+  "sdk.getDrive(url,driveOpts).version": {
     "properties": {
       "url": {
         "type": "string"
       }
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
     },
     "required": ["url"],
     "returns": {
