@@ -301,6 +301,9 @@
         "type": "string"
       }
     },
-    "required": ["url"]
+    "required": ["url"],
+    "returns": {
+      "type": "number"
+    }
   }
 }
