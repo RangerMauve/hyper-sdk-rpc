@@ -253,7 +253,9 @@
         "properties": {}
       }
     },
-    "required": ["url", "out"]
+    "required": ["url", "out"],
+    // FIXME: Returns a MirrorDrive, which is not useful serialized.
+    "returns": {}
   },
   "sdk.peers": {
     "properties": {},
