@@ -4,31 +4,6 @@
     // FIXME: Returns a promise.  How to indicate useless return value?
     "returns": {}
   },
-  "sdk.getDrive(url).createWriteStream(path,options)": {
-    "properties": {
-      "url": {
-        "type": "string"
-      },
-      "path": {
-        "type": "string"
-      },
-      "options": {
-        "type": "object",
-        "properties": {
-          "executable": {
-            "type": "boolean"
-          },
-          "metadata": {
-            "type": "object",
-            "properties": {}
-          }
-        }
-      }
-    },
-    "required": ["url", "path"],
-    // FIXME: Returns the write stream.  Not useful when serialized?
-    "returns": {}
-  },
   "sdk.getDrive(url).writable": {
     "properties": {
       "url": {
