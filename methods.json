@@ -347,14 +347,6 @@
       }
     }
   },
-  "sdk.getDrive(url).ready()": {
-    "properties": {
-      "url": {
-        "type": "string"
-      }
-    },
-    "required": ["url"]
-  },
   "sdk.getDrive(url).url": {
     "properties": {
       "url": {
