@@ -153,7 +153,7 @@ export class ServerConnection {
   async call (method, params, id) {
     const sections = parseMethod(method.slice(SDK_NAME.length))
 
-    return sections.reduce(async (objectPromise, section) => {
+    const value = sections.reduce(async (objectPromise, section) => {
       const object = await objectPromise
       const { type, property, params: paramNames } = section
 
@@ -178,17 +178,19 @@ export class ServerConnection {
         return null
       } else if (type === METHOD) {
         const args = paramNames.map((name) => params[name])
-        const value = await object[property](...args)
-        if (value && value[Symbol.asyncIterator]) {
-          return collect(value)
-        }
-        return value
+        return object[property](...args)
       } else if (type === PROPERTY) {
         return object[property]
       } else {
         throw new Error(ERR_INVALID_METHOD_SYNTAX)
       }
     }, this.sdk)
+
+    if (value[Symbol.asyncIterator]) {
+      return collect(value)
+    } else {
+      return value
+    }
   }
 
   async invoke ({ method, id, params }) {
