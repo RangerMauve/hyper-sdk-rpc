@@ -1,8 +1,6 @@
 {
   "sdk.close()": {
     "properties": {},
-    // FIXME: Returns a promise.  How to indicate useless return value?
-    "returns": {}
   },
   "sdk.getDrive(url,driveOpts).writable": {
     "properties": {
@@ -23,7 +21,6 @@
     },
     "required": ["url"],
     "returns": {
-      // FIXME: Can "returns" be a "boolean"?
       "type": "boolean"
     }
   },
@@ -97,7 +94,6 @@
               "type": "boolean"
             },
             "linkname": {
-              // FIXME: "linkname" may also be "null"
               "type": "string"
             },
             "blob": {
@@ -117,8 +113,9 @@
                 }
               }
             },
-            // FIXME: metadata can be anything?
-            "metadata": {}
+            "metadata": {
+              "type": "object"
+            }
           }
         }
       }
@@ -275,8 +272,7 @@
             "type": "array",
             "items": {
               "type": "string",
-              // FIXME: According to the docs, topics are base32
-              "format": "base32"
+              "format": "base64"
             }
           },
           "prioritized": {
@@ -311,8 +307,6 @@
       },
     },
     "required": ["url"],
-    // FIXME: Returns a promise
-    "returns": {}
   },
   "sdk.getDrive(url,driveOpts).put(path,buffer,options)": {
     "properties": {
