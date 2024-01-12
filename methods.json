@@ -1,14 +1,434 @@
 {
-	"sdk.getDrive(url).version": {
-		"properties": {
-			"url" : {"type": "string"}
-		}
-	},
-	"sdk.getDrive(url).mirror(out,options)": {
-		"properties": {
-			"url": {"type": "string"},
-			"out": {"type": "string"},
-			"options": {"type": "object", "properties": {}}
-		}
-	}
+  "sdk.close()": {
+    "properties": {},
+  },
+  "sdk.getDrive(url,driveOpts).writable": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "required": ["url"],
+    "returns": {
+      "type": "boolean"
+    }
+  },
+  "sdk.getDrive(url,driveOpts).del(path)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+      "path": {
+        "type": "string"
+      }
+    },
+    "required": ["url", "path"],
+    "returns": {}
+  },
+  "sdk.getDrive(url,driveOpts).entry(path,options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+      "path": {
+        "type": "string"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "follow": {
+            "type": "boolean"
+          },
+          "wait": {
+            "type": "boolean"
+          },
+          "timeout": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "required": ["url", "path"],
+    "returns": {
+      "type": "object",
+      "properties": {
+        "seq": "number",
+        "key": "string",
+        "value": {
+          "type": "object",
+          "properties": {
+            "executable": {
+              "type": "boolean"
+            },
+            "linkname": {
+              "type": "string"
+            },
+            "blob": {
+              "type": "object",
+              "properties": {
+                "blockOffset": {
+                  "type": "number"
+                },
+                "blockLength": {
+                  "type": "number"
+                },
+                "byteOffset": {
+                  "type": "number"
+                },
+                "byteLength": {
+                  "type": "number"
+                }
+              }
+            },
+            "metadata": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sdk.getDrive(url,driveOpts).get(path,options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+      "path": {
+        "type": "string"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "wait": {
+            "type": "boolean"
+          },
+          "timeout": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "required": ["url", "path"],
+    "returns": {
+      "type": "string",
+      "format": "base64"
+    }
+  },
+  "sdk.getDrive(url,driveOpts).list(folder,options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+      "folder": {
+        "type": "string"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "recursive": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "required": ["url", "folder"],
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "seq": "number",
+          "key": "string",
+          "value": {
+            "type": "object",
+            "properties": {
+              "executable": {
+                "type": "boolean"
+              },
+              "linkname": {
+                // FIXME: "linkname" may also be "null"
+                "type": "string"
+              },
+              "blob": {
+                "type": "object",
+                "properties": {
+                  "blockOffset": {
+                    "type": "number"
+                  },
+                  "blockLength": {
+                    "type": "number"
+                  },
+                  "byteOffset": {
+                    "type": "number"
+                  },
+                  "byteLength": {
+                    "type": "number"
+                  }
+                }
+              },
+              // FIXME: metadata can be anything?
+              "metadata": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "sdk.getDrive(url,driveOpts).mirror(out, options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+      "out": {
+        "type": "string"
+      },
+      "options": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "required": ["url", "out"],
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "op": "string",
+          "key": "string",
+          "bytesRemoved": "number",
+          "bytesAdded": "number"
+        }
+      }
+    }
+  },
+  "sdk.peers": {
+    "properties": {},
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "publicKey": {
+            "type": "string",
+            "format": "base64"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "base64"
+            }
+          },
+          "prioritized": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "sdk.publicKey": {
+    "properties": {},
+    "returns": {
+      "type": "string",
+      "format": "base64"
+    }
+  },
+  "sdk.getDrive(url,driveOpts).purge()": {
+    "properties": {
+      "url": {
+        "type": "string"
+      }
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+    },
+    "required": ["url"],
+  },
+  "sdk.getDrive(url,driveOpts).put(path,buffer,options)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+      "path": {
+        "type": "string"
+      },
+      "buffer": {
+        "type": "string",
+        "format": "base64"
+      },
+      "options": {
+        "type": "object",
+        "properties": {
+          "executable": {
+            "type": "boolean"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {}
+          }
+        }
+      }
+    },
+    "required": ["url", "path", "buffer"],
+    // FIXME: Actually returns Batch.put()
+    "returns": {}
+  },
+  "sdk.getDrive(url,driveOpts).readdir(folder)": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+      "folder": {
+        "type": "string",
+        "format": "base64"
+      }
+    },
+    "required": ["url", "folder"],
+    "returns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "sdk.getDrive(url,driveOpts).url": {
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "required": ["url"],
+    "returns": {
+      "type": "string"
+    }
+  },
+  "sdk.getDrive(url,driveOpts).version": {
+    "properties": {
+      "url": {
+        "type": "string"
+      }
+      "driveOpts": {
+        "type": "object",
+        "properties": {
+          "autoJoin": {
+            "type": "boolean"
+          },
+          "sparse": {
+            "type": "boolean"
+          }
+        }
+      },
+    },
+    "required": ["url"],
+    "returns": {
+      "type": "number"
+    }
+  }
 }
