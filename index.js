@@ -153,7 +153,7 @@ export class ServerConnection {
   async call (method, params, id) {
     const sections = parseMethod(method.slice(SDK_NAME.length))
 
-    const value = sections.reduce(async (objectPromise, section) => {
+    const value = await sections.reduce(async (objectPromise, section) => {
       const object = await objectPromise
       const { type, property, params: paramNames } = section
 
