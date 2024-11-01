@@ -20,7 +20,7 @@
   "license": "AGPL-3.0",
   "dependencies": {
     "exit-hook": "^4.0.0",
-    "hyper-sdk": "^4.3.0",
+    "hyper-sdk": "^5.1.0",
     "stream-json": "^1.8.0"
   },
   "devDependencies": {
