@@ -128,3 +128,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+package-lock.json
+
+# Build artifacts
+*.node
+build/bundle.cjs
+hyper-sdk-rpc
+hyper-sdk-rpc.blob
+patches/
+sea-config.json

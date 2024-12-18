@@ -24,8 +24,10 @@
     "stream-json": "^1.8.0"
   },
   "devDependencies": {
+    "esbuild": "^0.24.0",
     "get-port": "^7.0.0",
     "native-duplexpair": "^1.0.0",
+    "postject": "^1.0.0-alpha.6",
     "standard": "^17.1.0",
     "tape": "^5.7.0"
   }
