@@ -37,5 +37,5 @@ jobs:
       uses: actions/upload-artifact@v4
       if: runner.os == 'Windows'
       with:
-        path: ./build/hyper-sdk-rpc.exe
+        path: ./build/hyper-sdk-rpc-Windows
         name: hyper-sdk-rpc.exe
