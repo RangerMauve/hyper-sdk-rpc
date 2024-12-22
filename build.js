@@ -8,8 +8,12 @@ const PLATFORM = process.env.npm_config_platform || os.platform()
 
 const BUNDLE_FILE = 'build/bundle.cjs'
 const BLOB_FILE = './build/hyper-sdk-rpc.blob'
-const BIN_FILE = './build/hyper-sdk-rpc'
+let BIN_FILE = './build/hyper-sdk-rpc'
 const SEA_CONFIG_FILE = './build/sea-config.json'
+
+if (PLATFORM === 'win32') {
+  BIN_FILE += '.exe'
+}
 
 const natives = [
   'sodium-native',
