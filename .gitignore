@@ -138,3 +138,4 @@ hyper-sdk-rpc
 hyper-sdk-rpc.blob
 patches/
 sea-config.json
+.aider*

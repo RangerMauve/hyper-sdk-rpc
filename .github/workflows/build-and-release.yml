@@ -27,6 +27,13 @@ jobs:
       run: node build
     - name: Upload artifact
       uses: actions/upload-artifact@v2
+      if: runner.os != 'Windows'
       with:
         path: ./build/hyper-rpc-sdk
         name: hyper-rpc-sdk
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      if: runner.os == 'Windows'
+      with:
+        path: ./build/hyper-rpc-sdk.exe
+        name: hyper-rpc-sdk.exe
