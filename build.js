@@ -74,7 +74,7 @@ execSync(`node --experimental-sea-config ${SEA_CONFIG_FILE}`)
 
 await copyFile(process.execPath, BIN_FILE)
 
-console.log('Postjecting BIN')
+console.log(`Postjecting BIN into ${BIN_FILE}`)
 execSync(`npx postject ${BIN_FILE} NODE_SEA_BLOB ${BLOB_FILE} --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2`)
 
 async function copyBin (name) {
