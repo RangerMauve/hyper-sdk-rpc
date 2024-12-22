@@ -31,11 +31,11 @@ jobs:
       uses: actions/upload-artifact@v4
       if: runner.os != 'Windows'
       with:
-        path: ./build/hyper-rpc-sdk
-        name: hyper-rpc-sdk-{{runner.os}}
+        path: ./build/hyper-sdk-rpc
+        name: hyper-sdk-rpc-{{runner.os}}
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       if: runner.os == 'Windows'
       with:
-        path: ./build/hyper-rpc-sdk.exe
-        name: hyper-rpc-sdk.exe
+        path: ./build/hyper-sdk-rpc.exe
+        name: hyper-sdk-rpc.exe
