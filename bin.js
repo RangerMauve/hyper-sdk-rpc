@@ -38,13 +38,18 @@ async function main () {
     storage
   })
 
+  let connectionCount = 0
+
   const server = net.createServer(async (connection) => {
+    const id = connectionCount++
+    console.log(id, 'Connected')
     const rpc = new ServerConnection(sdk, connection)
     try {
       await rpc.process()
     } catch (e) {
-      console.error(e.stack)
+      console.error(id, e.stack)
     }
+    console.log(id, 'Disconnected')
   })
 
   server.listen(port, () => {
